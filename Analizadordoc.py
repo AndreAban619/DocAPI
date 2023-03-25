@@ -3,7 +3,14 @@ from docxtpl import DocxTemplate #importamos la libreria
 import os
 import comtypes.client
 import time
-
+import urllib.parse
+import requests
+url = 'http://localhost:3000/api/tokens'
+caracteres = "[]"
+data= requests.get(url)
+if data.status_code == 200:
+    data = data.json()
+    print(data)
 format_code = 17
 
 time_start = time.time()
@@ -13,8 +20,8 @@ word_app = comtypes.client.CreateObject('Word.Application')
 word_app.Visible = False
 
 tpl = DocxTemplate("Documentos\FORMATOS ISAI HACKATHON.docx") #plantilla a utilizar
-context = { 'ISAI_Articulo' : "Este es mi articulo", 'ISAI_Fundamentos': "Mi fundamento" , 'ISAI_Enc_Mun' : "14521", 'ISAI_Acta' : "aron chi"}#partes a reemplazar de la plantilla la izquierda es lo tokens y la derecha es la información por la cual se reemplaza por {{}}
-copias = 2
+context = {'ISAI_Articulo' : 1 }#partes a reemplazar de la plantilla la izquierda es lo tokens y la derecha es la información por la cual se reemplaza por {{}}
+copias = 1
 
 for i in range(0, copias, 1): # numero de copias del documento introducido
     print(i)   
