@@ -19,7 +19,7 @@ if data.status_code == 200:
         'id_usuario':e['id_usuario'] ,
         "F2_Municipio" : e[ "F2_Municipio"],
         "Cata_Nombre": e["Cata_Nombre"],
-        "Cata_NotoEsc": e[ "Cata_NotoEsc":],
+        "Cata_NotoEsc": e[ "Cata_NotoEsc"],
         "Cata_No.": e["Cata_No."],
         "Cata_Domicilio": e["Cata_Domicilio"],
         "RPP_Escritura":e["RPP_Escritura"],
@@ -90,7 +90,6 @@ if data.status_code == 200:
         "Empleo_Puesto": e["Empleo_Puesto"],
         "Cliente_TotalIngresos": e[ "Cliente_TotalIngresos"],
         "Informacion_TotalGastos":e[ "Informacion_TotalGastos"],
-        "cs_{DesempeñadoFuncionPublica}": e["cs_{DesempeñadoFuncionPublica}"],
         "ISAI_Enc_Mun": e[ "ISAI_Enc_Mun"],
         "ISAI_Articulo": e["ISAI_Articulo"],
         "ISAI_Fundamentos": e["ISAI_Fundamentos"],
@@ -110,7 +109,7 @@ if data.status_code == 200:
         "Inmu_Valor_Operacion":e["Inmu_Valor_Operacion"],
         "Inmu_Avaluo_Aperacion": e["Inmu_Avaluo_Aperacion"],
         "Inmu_Valor_Cperacion": e[ "Inmu_Valor_Cperacion"],
-        "Inmu_Impuesto_Pperacion": e["Inmu_Impuesto_Pperacion"],  
+        "Inmu_Impuesto_Pperacion": e["Inmu_Impuesto_Pperacion"]  
             }
 
 # Creamos el MS word app
@@ -118,12 +117,12 @@ word_app = comtypes.client.CreateObject('Word.Application')
 word_app.Visible = False
 #tpl = DocxTemplate("Ejemplo solicitud de crédito HACKATHON.docx")
 #tpl = DocxTemplate("F2 FORMATO CUALQUIER MUNICIPIO CON CATASTRO HACKATHON.docx")
-tpl = DocxTemplate('Documentos\F2 FORMATO CUALQUIER MUNICIPIO CON CATASTRO HACKATHON.docx') #plantilla a utilizar
+tpl = DocxTemplate("DocAPI\FORMATOS ISAI HACKATHON 3.docx") #plantilla a utilizar
  #partes a reemplazar de la plantilla la izquierda es lo tokens y la derecha es la información por la cual se reemplaza por {{}}
 copias = 1
 
 for i in range(0, copias, 1): # numero de copias del documento introducido
-    print(context)   
+    #print(context)   
     tpl.render(context) # El render introduce el valor
     tpl.save("Documentogen"+str(i+1)+".docx") # Nombre y formato a guardar
    
